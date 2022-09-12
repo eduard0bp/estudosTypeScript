@@ -152,7 +152,7 @@ console.log(funcionario.supervisores)
 console.log(funcionario.baterPonto(8))
 console.log(funcionario.baterPonto(10))
 
-// Unior Types
+// Union Types
 let nota: number | string = 10 // Define mais de um tipo dentro de uma variável
 console.log(`Minha nota é ${nota}!`)
 nota = '10'

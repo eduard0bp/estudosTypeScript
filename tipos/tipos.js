@@ -113,7 +113,7 @@ let funcionario2 = {
 console.log(funcionario.supervisores);
 console.log(funcionario.baterPonto(8));
 console.log(funcionario.baterPonto(10));
-// Unior Types
+// Union Types
 let nota = 10; // Define mais de um tipo dentro de uma variável
 console.log(`Minha nota é ${nota}!`);
 nota = '10';
@@ -175,3 +175,4 @@ let correntista = {
 };
 correntista.contaBancaria.depositar(3000);
 console.log(correntista);
+//# sourceMappingURL=tipos.js.map
