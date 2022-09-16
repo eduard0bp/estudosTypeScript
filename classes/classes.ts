@@ -167,3 +167,88 @@ console.log(pessoa1.idade)
 
 pessoa1.idade = -3
 console.log(pessoa1.idade)
+
+// Atributos e Métodos Estáticos
+
+class Matematica {
+   static PI: number = 3.1416
+
+  static areaCirc(raio: number): number {
+    return Matematica.PI * raio * raio
+  }
+}
+
+// const m1 = new Matematica() // Com Static não é necessário criar uma Instancia da Classe
+// m1.PI = 4.2
+// console.log(m1.areaCirc(4))
+
+// console.log(new Matematica().areaCirc(4)) // Sem Static
+console.log(Matematica.areaCirc(4)) // Com Static
+
+// Classe Abstrata
+// Classes Abstratas perdem a habilidade de serem instanciadas, servem para serem Classes Pai para outras Classes
+
+abstract class Calculo {
+  protected resultado: number = 0
+
+  abstract executar(...numeros: number[]): void 
+
+  getResultado(): number {
+    return this.resultado
+  }
+}
+
+class Soma extends Calculo {
+  executar(...numeros: number[]): void {
+    this.resultado = numeros.reduce((total, atual) => total + atual)
+  }
+}
+
+class Multiplicacao extends Calculo {
+  executar(...numeros: number[]): void {
+    this.resultado = numeros.reduce((total, atual) => total * atual)
+  }
+}
+
+let c1: Calculo = new Soma() // Exemplo de Polimorfismo
+c1.executar(2, 3, 4, 5)
+console.log(c1.getResultado())
+
+
+c1 = new Multiplicacao()
+c1.executar(2, 3, 4, 5)
+console.log(c1.getResultado())
+
+// Construtor privado & Singleton
+
+class Unico {
+  private static instance: Unico = new Unico
+  private constructor() {}
+
+  static getInstance(): Unico {
+    return Unico.instance
+  }
+
+  agora() {
+    return new Date
+  }
+}
+
+// const errado = new Unico() // Exemplo Errado
+console.log(Unico.getInstance().agora())
+
+// Atributos Somente Leitura
+
+class Aviao {
+  public readonly modelo: string
+  
+  constructor(modelo: string, public readonly prefixo: string) {
+    this.modelo = modelo
+  }
+}
+
+const turboHelice = new Aviao('Tu-114', 'PT-ABC')
+// turboHelice.modelo = 'DC-8'
+// turboHelice.prefixo = 'PT-DEF'
+console.log(turboHelice)
+
